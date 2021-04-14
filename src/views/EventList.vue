@@ -1,5 +1,6 @@
 <template>
   <div>
+<<<<<<< HEAD
     <h1>Events for {{ user.user.name }}</h1>
     <EventCard v-for="event in event.events" :key="event.id" :event="event"/>
     <template v-if="page != 1">
@@ -9,6 +10,10 @@
     </template>
     <router-link v-if="hasNextPage" :to="{ name: 'event-list', query: { page: page + 1 } }" rel="next">
       Next Page</router-link>
+=======
+    <h1>Events Listing</h1>
+    <EventCard v-for="event in events" :key="event.id" :event="event"/>
+>>>>>>> lesson9-start
   </div>
 </template>
 
@@ -29,6 +34,7 @@ function getPageEvents(routeTo, next) {
     })
 }
 
+import EventService from '@/services/EventService.js'
 export default {
   props: {
     page: {
@@ -39,6 +45,7 @@ export default {
   components: {
     EventCard
   },
+<<<<<<< HEAD
   beforeRouteEnter(routeTo, routeFrom, next) {
     getPageEvents(routeTo, next)
   },
@@ -50,6 +57,24 @@ export default {
       return this.event.eventsTotal > this.page * this.event.perPage
     },
     ...mapState(['event', 'user'])
+=======
+
+  data() {
+    return {
+      events: []
+    }
+  },
+
+  created() {
+    EventService.getEvents()
+      .then(response => {
+        this.events = response.data
+      })
+
+      .catch(error => {
+        console.log('There was an error:' + error.response)
+      })
+>>>>>>> lesson9-start
   }
 }
 </script>
