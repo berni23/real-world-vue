@@ -23,17 +23,6 @@
 <script>
 import EventService from '@/services/EventService.js'
 export default {
-<<<<<<< HEAD
-  props: {
-    event: {
-      type: Object,
-      required: true
-    }
-  }
-}
-</script>
-<style scoped>
-=======
   props: ['id'],
 
   data() {
@@ -57,7 +46,6 @@ export default {
 
 
  <style scoped>
->>>>>>> lesson9-start
 .location {
   margin-bottom: 0;
 }
